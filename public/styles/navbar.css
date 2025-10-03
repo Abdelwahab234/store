@@ -1,0 +1,98 @@
+* { 
+    padding: 0; 
+    margin: 0; 
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+nav { 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0 50px;
+    background-color: rgba(10, 205, 254, 0);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    position: fixed; /* أفضل من absolute عشان تظل ظاهرة عند scroll */
+    top: 0;
+    left: 0;
+    height: 100px;
+    z-index: 1000; /* خليها فوق كل العناصر */
+    
+    /* animation */
+    transform: translateY(-150%);
+    animation: slideDown 1s forwards ease-out;
+}
+
+
+@keyframes slideDown {
+    to {
+        transform: translateY(0);
+    }
+}
+
+.logo { 
+    width: 100px;
+    height: auto;
+    transition: transform 0.3s;
+}
+
+nav > ul { 
+    display: flex;
+    gap: 30px;
+    list-style: none;
+    font-size: 1.2rem;
+    width:50%;
+    justify-content: space-around;
+}
+
+nav > ul > li > span {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    position: relative;
+    transition: all 0.3s ease;
+    color:black;
+    cursor: pointer;
+}
+
+nav > ul > li > span::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: #00ffe5;
+    transition: width 0.3s ease;
+}
+
+nav > ul > li > span:hover {
+    color: #00ffd5;
+}
+
+nav > ul > li > span:hover::after {
+    width: 100%;
+}
+
+nav > ul > li > a:hover {
+    transform: translateY(-3px);
+}
+
+@media (max-width: 768px) {
+    nav {
+        flex-direction: row;
+        height: 100px;
+        padding: 20px;
+
+    }
+
+    nav > ul {
+        flex-direction: row;
+        gap: 15px;
+        width: 100%;
+        align-items: center;
+    }
+}
